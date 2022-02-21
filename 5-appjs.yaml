@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  namespace: ingress-nginx
+  name: appjs-rc
+spec:
+  replicas: 1
+  template:
+    metadata: 
+      labels:
+        app: appjs
+    spec:
+      containers:
+      - name: appjs-container
+        image: smlinux/appjs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ingress-nginx
+  name: appjs-service
+spec:
+  selector:
+    app: appjs
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

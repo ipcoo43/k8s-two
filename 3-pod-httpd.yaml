@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: httpd-pod
+  labels:
+    app: web-one
+spec:
+  containers:
+  - name: httpd-container
+    image: httpd
+    resources:
+      requests:
+        memory: 500Mi
+        cpu: 1
